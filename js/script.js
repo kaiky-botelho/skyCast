@@ -29,23 +29,34 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                 }
             });
 
+            const tituloPrev = document.getElementById("tituloPrevisao");
+            const pais = data.city.country;
+            
+            tituloPrev.innerHTML = `
+            <h2>${cidade}, ${pais}</h2>
+            `
+
             // Exibe as previsões diárias
             for (const date in previsaoDiaria) {
                 const previsaoTemp = previsaoDiaria[date];
-                const temp = previsaoTemp.main.temp;
+                const temp = Math.round(previsaoTemp.main.temp);
+                const sensTerm = previsaoTemp.main.feels_like;
                 const descricao = previsaoTemp.weather[0].description;
                 const iconCode = previsaoTemp.weather[0].icon; 
                 const dataForm = new Date(date).toLocaleDateString("pt-br", {
                     weekday: "long",
                     day: "numeric",
-                    month: "long",
+                    month: "short",
                 });
+
+
 
                 previsaoContainer.innerHTML += `
                 <div class="previsao-item">
                     <h3>${dataForm}</h3>
                     <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
-                    <p>Temperatura: ${temp}°C</p>
+                    <p class = "temperatura">${temp}°C</p>
+                    <p>Sensação Térmica: ${sensTerm}</p>
                     <p>${descricao}</p>
                 </div>
                 `;

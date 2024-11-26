@@ -1,10 +1,8 @@
-const apiKey = '26e6abd69394cf47b1ebbb366e128e40';
+const apiKey = "26e6abd69394cf47b1ebbb366e128e40";
+
 
 document.getElementById("searchBtn").addEventListener("click", () => {
-
     const cidade = document.getElementById("cidade").value;
-
-    // URL da API para buscar a previsão
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&units=metric&appid=${apiKey}&lang=pt_br`;
 
     fetch(url)
@@ -13,57 +11,92 @@ document.getElementById("searchBtn").addEventListener("click", () => {
             return response.json();
         })
         .then((data) => {
-            const previsaoContainer = document.getElementById("previsao");
-            previsaoContainer.innerHTML = ""; // Limpar previsões anteriores
+            const previsaoHojeContainer = document.getElementById("previsao-hoje");
+            const previsaoOutrosContainer = document.getElementById("previsão-outros");
+            const tituloPrev = document.getElementById("tituloPrevisao");
 
+            // Limpa previsões anteriores
+            previsaoHojeContainer.innerHTML = "";
+            previsaoOutrosContainer.innerHTML = "";
+
+            const hoje = new Date().toLocaleDateString("en-CA"); // Data de hoje no formato YYYY-MM-DD
             const previsaoDiaria = {};
 
-            // Filtra as previsões para pegar uma por dia, por exemplo, as de meio-dia
+            // Filtrar previsões para capturar apenas as de meio-dia
             data.list.forEach((item) => {
-                const date = item.dt_txt.split(" ")[0]; // Data (YYYY-MM-DD)
-                const time = item.dt_txt.split(" ")[1]; // Hora (HH:MM:SS)
-
-                // Se for o meio-dia (12:00:00), adiciona ao objeto previsaoDiaria
+                const date = item.dt_txt.split(" ")[0];
+                const time = item.dt_txt.split(" ")[1];
                 if (time === "12:00:00") {
                     previsaoDiaria[date] = item;
                 }
             });
 
-            const tituloPrev = document.getElementById("tituloPrevisao");
             const pais = data.city.country;
-            
-            tituloPrev.innerHTML = `
-            <h2>${cidade}, ${pais}</h2>
-            `
 
-            // Exibe as previsões diárias
+            tituloPrev.innerHTML = `
+                <h2>${cidade}, ${pais}</h2>
+            `;
+
+            // Adicionar previsões ao DOM
             for (const date in previsaoDiaria) {
                 const previsaoTemp = previsaoDiaria[date];
                 const temp = Math.round(previsaoTemp.main.temp);
-                const sensTerm = previsaoTemp.main.feels_like;
+                const sensTerm = Math.round(previsaoTemp.main.feels_like);
                 const descricao = previsaoTemp.weather[0].description;
-                const iconCode = previsaoTemp.weather[0].icon; 
+                const iconCode = previsaoTemp.weather[0].icon;
+                const umidade = previsaoTemp.main.humidity; // Umidade
+                const vento = Math.round(previsaoTemp.wind.speed); // Velocidade do vento
+                const pressao = previsaoTemp.main.pressure; 
+
                 const dataForm = new Date(date).toLocaleDateString("pt-br", {
-                    weekday: "long",
                     day: "numeric",
                     month: "short",
                 });
 
-
-
-                previsaoContainer.innerHTML += `
-                <div class="previsao-item">
-                    <h3>${dataForm}</h3>
-                    <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
-                    <p class = "temperatura">${temp}°C</p>
-                    <p>Sensação Térmica: ${sensTerm}</p>
-                    <p>${descricao}</p>
-                </div>
-                `;
+                if (date === hoje) {
+                    // Adicionar previsão de hoje
+                    previsaoHojeContainer.innerHTML = `
+                        <div class="previsao-hoje-destaque">
+                            <h3>${dataForm}</h3>
+                            <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
+                            <p class="temperatura">${temp}°C</p>
+                            <p>${descricao}</p>
+                            </div>
+                            <div class = "outras-previsao">
+                                <div class = "itens-previsao">
+                                    <img src ="">
+                                    <p>Sensação: ${sensTerm}°C</p>                            
+                                </div>
+                                <div class = "itens-previsao">
+                                    <img src ="">
+                                    <p>Umidade: ${umidade}%</p>                            
+                                </div>
+                                <div class = "itens-previsao">
+                                    <img src ="">
+                                    <p>Vento: ${vento}m</p>                            
+                                </div>
+                                <div class = "itens-previsao">
+                                    <img src ="">
+                                    <p>SPressão: ${pressao} hPa</p>                            
+                                </div>
+                            </div>
+                    `;
+                } else {
+                    // Adicionar previsão para outros dias
+                    previsaoOutrosContainer.innerHTML += `
+                        <div class="previsao-item">
+                            <h3>${dataForm}</h3>
+                            <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
+                            <p>${temp}°C</p>
+                            <p>${descricao}</p>
+                        </div>
+                    `;
+                }
             }
         })
         .catch((error) => {
             console.error("Erro:", error.message);
-            document.getElementById("previsao").innerHTML = `<p>${error.message}</p>`;
+            document.getElementById("previsao-hoje").innerHTML = `<p>${error.message}</p>`;
+            document.getElementById("previsão-outros").innerHTML = "";
         });
 });

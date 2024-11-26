@@ -41,7 +41,8 @@ document.getElementById("searchBtn").addEventListener("click", () => {
             for (const date in previsaoDiaria) {
                 const previsaoTemp = previsaoDiaria[date];
                 const temp = Math.round(previsaoTemp.main.temp);
-                const sensTerm = Math.round(previsaoTemp.main.feels_like);
+                const temp_min = Math.round(previsaoTemp.main.temp_min);
+                const temp_max = Math.round(previsaoTemp.main.temp_max);
                 const descricao = previsaoTemp.weather[0].description;
                 const iconCode = previsaoTemp.weather[0].icon;
                 const umidade = previsaoTemp.main.humidity; // Umidade
@@ -64,20 +65,20 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                             </div>
                             <div class = "outras-previsao">
                                 <div class = "itens-previsao">
-                                    <img src ="">
-                                    <p>${sensTerm}°C</p>                            
+                                    <img src ="/img/tempo-severo.png">
+                                    <p>${temp_min}°C</p>                            
                                 </div>
                                 <div class = "itens-previsao">
-                                    <img src ="">
+                                    <img src ="/img/exposicao-ao-frio.png">
+                                    <p>${temp_max}°C</p>                            
+                                </div>
+                                <div class = "itens-previsao">
+                                    <img src ="/img/gota-de-agua.png">
                                     <p>${umidade}%</p>                            
                                 </div>
                                 <div class = "itens-previsao">
                                     <img src ="/img/vento.png">
                                     <p>${vento}m</p>                            
-                                </div>
-                                <div class = "itens-previsao">
-                                    <img src ="">
-                                    <p>${pressao}hPa</p>                            
                                 </div>
                             </div>
                     `;

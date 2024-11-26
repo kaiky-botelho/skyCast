@@ -5,14 +5,18 @@
 }
 
 body{
-    background-color: #182842;
+    background-color: #c0c9d5;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1{
-    color: #c0c9d5;
+    color: #000000d6;
     text-align: center;
     text-transform: uppercase;
+}
+
+.data{
+    color: #ef943a;
 }
 
 .container{
@@ -23,7 +27,7 @@ h1{
 
 .tituloPrevisao{
     text-align: center;
-    color: #c0c9d6;
+    color: #000000d6;
 }
 
 .inputPesquisa{
@@ -35,7 +39,7 @@ h1{
 .inputPesquisa input{
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #c0c9d5 ;
+    border-bottom: 2px solid #3F5C88 ;
 }
 
 .outras-previsao{
@@ -46,7 +50,7 @@ h1{
 
 
 .previsao-hoje .previsao-hoje-destaque {
-    color:  #93a9c8;
+    color:  #000000d6;
     text-align: center;
     margin: 0 auto;
     display: flex;
@@ -64,14 +68,17 @@ h1{
 
 .outras-previsao .itens-previsao{
     background-color: #3F5C88;
-    width: 40%;
+    width: 50%;
     padding: 10px;
-    color: #c0c9d5;
+    color: #000000d6;
     text-align: center;
     font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+}
+
+.outras-previsao .itens-previsao img{
+    max-width: 100%;
+    width: 20%;
 }
 
 .previsao-outros{
@@ -82,4 +89,14 @@ h1{
 .temperatura{
     font-size: 50px;
     font-weight: 900;
+}
+
+
+.previsao-outros .previsao-item{
+    background-color: #3F5C88;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }

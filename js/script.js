@@ -57,7 +57,7 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                     // Adicionar previsão de hoje
                     previsaoHojeContainer.innerHTML = `
                         <div class="previsao-hoje-destaque">
-                            <h3>${dataForm}</h3>
+                            <h3 class = "data">${dataForm}</h3>
                             <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
                             <p class="temperatura">${temp}°C</p>
                             <p>${descricao}</p>
@@ -65,19 +65,19 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                             <div class = "outras-previsao">
                                 <div class = "itens-previsao">
                                     <img src ="">
-                                    <p>Sensação: ${sensTerm}°C</p>                            
+                                    <p>${sensTerm}°C</p>                            
                                 </div>
                                 <div class = "itens-previsao">
                                     <img src ="">
-                                    <p>Umidade: ${umidade}%</p>                            
+                                    <p>${umidade}%</p>                            
+                                </div>
+                                <div class = "itens-previsao">
+                                    <img src ="/img/vento.png">
+                                    <p>${vento}m</p>                            
                                 </div>
                                 <div class = "itens-previsao">
                                     <img src ="">
-                                    <p>Vento: ${vento}m</p>                            
-                                </div>
-                                <div class = "itens-previsao">
-                                    <img src ="">
-                                    <p>SPressão: ${pressao} hPa</p>                            
+                                    <p>${pressao}hPa</p>                            
                                 </div>
                             </div>
                     `;
@@ -85,7 +85,7 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                     // Adicionar previsão para outros dias
                     previsaoOutrosContainer.innerHTML += `
                         <div class="previsao-item">
-                            <h3>${dataForm}</h3>
+                            <h3 class = "data">${dataForm}</h3>
                             <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${descricao}">
                             <p>${temp}°C</p>
                             <p>${descricao}</p>

@@ -65,19 +65,19 @@ document.getElementById("searchBtn").addEventListener("click", () => {
                             </div>
                             <div class = "outras-previsao">
                                 <div class = "itens-previsao">
-                                    <img src ="/img/tempo-severo.png">
+                                    <img src ="./img/tempo-severo.png">
                                     <p>${temp_min}°C</p>                            
                                 </div>
                                 <div class = "itens-previsao">
-                                    <img src ="/img/exposicao-ao-frio.png">
+                                    <img src ="./img/exposicao-ao-frio.png">
                                     <p>${temp_max}°C</p>                            
                                 </div>
                                 <div class = "itens-previsao">
-                                    <img src ="/img/gota-de-agua.png">
+                                    <img src ="./img/gota-de-agua.png">
                                     <p>${umidade}%</p>                            
                                 </div>
                                 <div class = "itens-previsao">
-                                    <img src ="/img/vento.png">
+                                    <img src ="./img/vento.png">
                                     <p>${vento}m</p>                            
                                 </div>
                             </div>

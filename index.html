@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previsão do tempo</title>
+  <link rel="preload" href="./css/style.css" as="style">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Previsão do Tempo</h1>
+  <main>
+    <div class="previsao-bg">
+      <div class="previsao container">
+        <h1> SKYCAST <br> PREVISÃO DO TEMPO</h1>
         <div class="inputPesquisa">
-            <input type="text" id="cidade" class="cidade" placeholder="Digite uma cidade" />
-            <button id="searchBtn">Buscar</button>
+          <input type="text" id="local" class="local" placeholder="Digite Cidade, Estado (opcional)" />
+          <button id="searchBtn">Buscar</button>
         </div>
-        <div class="tituloPrevisao" id="tituloPrevisao"></div>
-        <div id="previsao-hoje" class="previsao-hoje">
+      </div>
+    </div>
+    <div class="container outras">
+      <div class="tituloPrevisao" id="tituloPrevisao"></div>
+      <div id="previsao-hoje" class="previsao-hoje"></div>
+      <div class="previsao-outros" id="previsao-outros"></div>
+    </div>
+  </main>
+  <script src="./js/script.js"></script>
 
-        </div>
-        <div class="previsao-outros" id="previsão-outros">
-        </div>
-    </div>      
-    <script src="./js/script.js"></script>
 </body>
 
 </html>

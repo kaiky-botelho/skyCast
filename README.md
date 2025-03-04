@@ -23,7 +23,7 @@ O SKYCAST é uma aplicação simples para mostrar a previsão do tempo de uma ci
    git clone https://github.com/seu-usuario/skycast.git
 2 Crie uma chave de API do OpenWeatherMap:
 
-** Como Obter a Chave de API **
+### Como Obter a Chave de API 
 
 Siga os passos abaixo para gerar uma chave de API do OpenWeatherMap e integrá-la no projeto:
 
